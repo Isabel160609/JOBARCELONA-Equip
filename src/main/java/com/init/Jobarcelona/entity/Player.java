@@ -20,7 +20,6 @@ public class Player {
     @Column(name = "id", nullable = false)
     @Id
     private Long id;
-
     @Column(name="reference")
     private int reference;
     @Column(name="age")
