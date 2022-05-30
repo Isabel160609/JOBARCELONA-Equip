@@ -39,4 +39,6 @@ public class Player {
     private String position;
     @Column(name="price")
     private int price;
+
+
 }
