@@ -20,5 +20,8 @@ public class PlayerDto {
     private int SelectionsNation;
     private String position;
     private int price;
+    private Champ champ;
+    private Cup cup;
+    private Continent continent;
     
 }
