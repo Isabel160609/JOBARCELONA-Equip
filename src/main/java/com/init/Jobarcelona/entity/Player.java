@@ -16,7 +16,6 @@ import javax.persistence.*;
 @Table(name="player")
 public class Player {
 
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     @Id
@@ -39,7 +38,13 @@ public class Player {
     private String position;
     @Column(name="price")
     private int price;
+    @OneToOne
+    @JoinColumn(name = "champ_id")
     private Champ champ;
+    @OneToOne
+    @JoinColumn(name = "cup_id")
     private Cup cup;
+    @OneToOne
+    @JoinColumn(name = "continent_id")
     private Continent continent;
 }
