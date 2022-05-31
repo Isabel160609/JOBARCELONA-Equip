@@ -21,7 +21,7 @@ public class PlayerController {
         return "Hello testing jobarcelona 2022";
     }
 
-   //return reference + price
+     //return reference + price
     @GetMapping(value="/getSimplePlayer/{reference}")
     public ResponseEntity<?> getSimplePlayer(@PathVariable int reference){
         SimplePlayerDto simplePlayerDto = playerService.findSimplePlayers(reference);
@@ -34,7 +34,6 @@ public class PlayerController {
         PlayerDto PlayerDto = playerService.findPlayer(reference);
         return ResponseEntity.status(200).body(PlayerDto);
     }
-
 
     //List of all data plyers
     @GetMapping(value = "/getall")
@@ -55,7 +54,7 @@ public class PlayerController {
     @PutMapping(value="/update/{id}")
     public PlayerDto update(@PathVariable int id, @RequestBody PlayerDto playerDto){
         PlayerDto playerToUpdate = playerService.UpdatePlayer(id, playerDto);
-        return playerDto;
+        return playerToUpdate;
     }
 
     @DeleteMapping(value = "/delete{id}" )
