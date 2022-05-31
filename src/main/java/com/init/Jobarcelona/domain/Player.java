@@ -1,6 +1,5 @@
 package com.init.Jobarcelona.domain;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,38 +12,39 @@ import javax.persistence.*;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="player")
+@Table(name = "player")
 public class Player {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     @Id
     private Long id;
-    @Column(name="reference")
+    @Column(name = "reference")
     private int reference;
-    @Column(name="age")
+    @Column(name = "age")
     private int age;
-    @Column(name="nation")
+    @Column(name = "nation")
     private String nation;
-    @Column(name="league")
+    @Column(name = "league")
     private String league;
-    @Column(name="team")
+    @Column(name = "team")
     private String team;
-    @Column(name="goals_selection")
+    @Column(name = "goals_selection")
     private int goalsSelection;
-    @Column(name="selections_nation")
+    @Column(name = "selections_nation")
     private int SelectionsNation;
-    @Column(name="position")
+    @Column(name = "position")
     private String position;
-    @Column(name="price")
+    @Column(name = "price")
     private int price;
-    @OneToOne
+
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "champ_id")
     private Champ champ;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cup_id")
     private Cup cup;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "continent_id")
     private Continent continent;
 }

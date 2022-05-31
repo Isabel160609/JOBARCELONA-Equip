@@ -23,8 +23,7 @@ public class PlayerApplicationImp {
 
     public PlayerDto createPlayer(PlayerDto playerDto) {
         Player player = playerMapper.toPlayer(playerDto);
-        playerRepository.save(player);
-        PlayerDto newPlayer = playerMapper.toPlayerDto(player);
+        PlayerDto newPlayer = playerMapper.toPlayerDto(this.playerRepository.save(player));
         return newPlayer;
     }
 

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/jobarcelona")
+@RequestMapping("jobarcelona")
 
 public class PlayerController {
 
@@ -29,44 +29,44 @@ public class PlayerController {
         this.playerService = playerService;
     }
 
-    @PostMapping(value = "/create")
+    @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody PlayerDto playerDto) {
         PlayerDto data = playerService.createPlayer(playerDto);
         return ResponseEntity.status(201).body(data);
     }
 
-    @GetMapping(value = "/getPlayer/{reference}")
+    @GetMapping("/getPlayer/{reference}")
     public ResponseEntity<?> getPlayer(@PathVariable int reference) {
         PlayerDto data = playerService.findPlayer(reference);
         return ResponseEntity.status(200).body(data);
     }
 
-    @GetMapping(value = "/getSimplePlayer/{reference}")
+    @GetMapping("/getSimplePlayer/{reference}")
     public ResponseEntity<?> getSimplePlayer(@PathVariable int reference) {
         SimplePlayerDto data = playerService.findSimplePlayers(reference);
         return ResponseEntity.status(200).body(data);
     }
 
-    @GetMapping(value = "/getall")
+    @GetMapping("/getall")
     public ResponseEntity<?> getAllPlayer() {
         List<PlayerDto> data = playerService.listPlayers();
         return ResponseEntity.status(200).body(data);
     }
 
-    @GetMapping(value = "/getall-simple")
+    @GetMapping("/getall-simple")
     public ResponseEntity<?> getAllPlayerSimple() {
         List<SimplePlayerDto> data = playerService.listSimplePlayers();
         return ResponseEntity.status(200).body(data);
 
     }
 
-    @PutMapping(value = "/update/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable int id, @RequestBody PlayerDto playerDto) {
         PlayerDto data = playerService.UpdatePlayer(id, playerDto);
         return ResponseEntity.status(200).body(data);
     }
 
-    @DeleteMapping(value = "/delete{id}")
+    @DeleteMapping("/delete{id}")
     public ResponseEntity<?> delete(@PathVariable int id) {
         playerService.deletePlayer(id);
         return ResponseEntity.ok().build();
