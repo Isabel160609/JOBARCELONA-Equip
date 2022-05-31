@@ -1,5 +1,8 @@
 package com.init.Jobarcelona.dto;
 
+import com.init.Jobarcelona.entity.Champ;
+import com.init.Jobarcelona.entity.Continent;
+import com.init.Jobarcelona.entity.Cup;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
