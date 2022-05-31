@@ -1,14 +1,14 @@
-package com.init.Jobarcelona.Core;
+package com.init.Jobarcelona.core.mappers;
 
 import java.util.List;
 
-import com.init.Jobarcelona.dto.*;
-import com.init.Jobarcelona.entity.Champ;
-import com.init.Jobarcelona.entity.Continent;
-import com.init.Jobarcelona.entity.Cup;
-import org.mapstruct.Mapper;
+import com.init.Jobarcelona.core.mappers.dtos.*;
+import com.init.Jobarcelona.domain.Champ;
+import com.init.Jobarcelona.domain.Continent;
+import com.init.Jobarcelona.domain.Cup;
+import com.init.Jobarcelona.domain.Player;
 
-import com.init.Jobarcelona.entity.Player;
+import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface PlayerMapper {

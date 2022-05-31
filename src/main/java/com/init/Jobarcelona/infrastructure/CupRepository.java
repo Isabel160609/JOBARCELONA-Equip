@@ -1,6 +1,7 @@
-package com.init.Jobarcelona.repository;
+package com.init.Jobarcelona.infrastructure;
 
-import com.init.Jobarcelona.entity.Cup;
+import com.init.Jobarcelona.domain.Cup;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

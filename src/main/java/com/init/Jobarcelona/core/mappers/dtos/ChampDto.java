@@ -1,4 +1,4 @@
-package com.init.Jobarcelona.dto;
+package com.init.Jobarcelona.core.mappers.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

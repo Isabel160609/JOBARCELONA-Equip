@@ -1,4 +1,4 @@
-package com.init.Jobarcelona.entity;
+package com.init.Jobarcelona.domain;
 
 
 import lombok.AllArgsConstructor;

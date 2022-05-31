@@ -1,65 +1,75 @@
 package com.init.Jobarcelona.controller;
 
-import com.init.Jobarcelona.dto.PlayerDto;
-import com.init.Jobarcelona.dto.SimplePlayerDto;
-import com.init.Jobarcelona.service.PlayerService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
+import com.init.Jobarcelona.application.PlayerApplicationImp;
+import com.init.Jobarcelona.core.mappers.dtos.PlayerDto;
+import com.init.Jobarcelona.core.mappers.dtos.SimplePlayerDto;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 @RestController
-@RequestMapping(value="/jobarcelona")
+@RequestMapping(value = "/jobarcelona")
 
 public class PlayerController {
+
+    private final PlayerApplicationImp playerService;
+
     @Autowired
-    PlayerService playerService;
-
-    @GetMapping(value="/test")
-    public String hello(){
-        return "Hello testing jobarcelona 2022";
+    public PlayerController(final PlayerApplicationImp playerService) {
+        this.playerService = playerService;
     }
 
-     //return reference + price
-    @GetMapping(value="/getSimplePlayer/{reference}")
-    public ResponseEntity<?> getSimplePlayer(@PathVariable int reference){
-        SimplePlayerDto simplePlayerDto = playerService.findSimplePlayers(reference);
-        return ResponseEntity.status(200).body(simplePlayerDto);
+    @PostMapping(value = "/create")
+    public ResponseEntity<?> create(@RequestBody PlayerDto playerDto) {
+        PlayerDto data = playerService.createPlayer(playerDto);
+        return ResponseEntity.status(201).body(data);
     }
 
-  //return reference + price
-    @GetMapping(value="/getPlayer/{reference}")
-    public ResponseEntity<?> getPlayer(@PathVariable int reference){
-        PlayerDto PlayerDto = playerService.findPlayer(reference);
-        return ResponseEntity.status(200).body(PlayerDto);
+    @GetMapping(value = "/getPlayer/{reference}")
+    public ResponseEntity<?> getPlayer(@PathVariable int reference) {
+        PlayerDto data = playerService.findPlayer(reference);
+        return ResponseEntity.status(200).body(data);
     }
 
-    //List of all data plyers
+    @GetMapping(value = "/getSimplePlayer/{reference}")
+    public ResponseEntity<?> getSimplePlayer(@PathVariable int reference) {
+        SimplePlayerDto data = playerService.findSimplePlayers(reference);
+        return ResponseEntity.status(200).body(data);
+    }
+
     @GetMapping(value = "/getall")
-    public List<PlayerDto> getAllPlayer(){
-        List<PlayerDto> players = playerService.listPlayers();
-        return players;
-
+    public ResponseEntity<?> getAllPlayer() {
+        List<PlayerDto> data = playerService.listPlayers();
+        return ResponseEntity.status(200).body(data);
     }
 
     @GetMapping(value = "/getall-simple")
-    public List<SimplePlayerDto> getAllPlayerSimple(){
-        List<SimplePlayerDto> players = playerService.listSimplePlayers();
-        return players;
+    public ResponseEntity<?> getAllPlayerSimple() {
+        List<SimplePlayerDto> data = playerService.listSimplePlayers();
+        return ResponseEntity.status(200).body(data);
 
     }
 
-    // update player
-    @PutMapping(value="/update/{id}")
-    public PlayerDto update(@PathVariable int id, @RequestBody PlayerDto playerDto){
-        PlayerDto playerToUpdate = playerService.UpdatePlayer(id, playerDto);
-        return playerToUpdate;
+    @PutMapping(value = "/update/{id}")
+    public ResponseEntity<?> update(@PathVariable int id, @RequestBody PlayerDto playerDto) {
+        PlayerDto data = playerService.UpdatePlayer(id, playerDto);
+        return ResponseEntity.status(200).body(data);
     }
 
-    @DeleteMapping(value = "/delete{id}" )
-    public void delete(@PathVariable int id){
+    @DeleteMapping(value = "/delete{id}")
+    public ResponseEntity<?> delete(@PathVariable int id) {
         playerService.deletePlayer(id);
+        return ResponseEntity.ok().build();
     }
 
 }
