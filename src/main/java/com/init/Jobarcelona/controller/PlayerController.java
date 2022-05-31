@@ -21,15 +21,6 @@ public class PlayerController {
         return "Hello testing jobarcelona 2022";
     }
 
-
-    // return reference + price
-   // @GetMapping(value="/")
-    //public ResponseEntity<?> getSimplePlayer( ){
-     //   SimplePlayerDto simplePlayerDto = playerService.listSimplePlayers();
-     //   return ResponseEntity.status(200).body(simplePlayerDto);
-   // }
-
-
     //List of all data plyers
     @GetMapping(value = "/getall")
     public List<PlayerDto> getAllPlayer(){
@@ -44,7 +35,19 @@ public class PlayerController {
         return players;
 
     }
+    //return reference + price
+    @GetMapping(value="/getSimplePlayer/{reference}")
+    public ResponseEntity<?> getSimplePlayer(@PathVariable int reference){
+        SimplePlayerDto simplePlayerDto = playerService.findSimplePlayers(reference);
+        return ResponseEntity.status(200).body(simplePlayerDto);
+    }
 
+    //return reference + price
+    @GetMapping(value="/getPlayer/{reference}")
+    public ResponseEntity<?> getPlayer(@PathVariable int reference){
+        PlayerDto PlayerDto = playerService.findPlayer(reference);
+        return ResponseEntity.status(200).body(PlayerDto);
+    }
     // update player
     @PutMapping(value="/update/{id}")
     public PlayerDto update(@PathVariable int id, @RequestBody PlayerDto playerDto){
