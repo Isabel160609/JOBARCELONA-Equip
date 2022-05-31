@@ -39,6 +39,7 @@ public class Player {
     private String position;
     @Column(name="price")
     private int price;
-
-
+    private Champ champ;
+    private Cup cup;
+    private Continent continent;
 }
