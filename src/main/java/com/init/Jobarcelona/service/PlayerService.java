@@ -21,15 +21,6 @@ public class PlayerService {
 private PlayerRepository playerRepository;
 
 @Autowired
-private Champ champ;
-
-@Autowired
-private Continent continent;
-
-@Autowired
-private Cup cup;
-
-@Autowired
 private com.init.Jobarcelona.Core.PlayerMapper playerMapper;
 
     public Player createPlayer(PlayerDto playerDto) {
