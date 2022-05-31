@@ -1,8 +1,7 @@
 package com.init.Jobarcelona.controller.repository;
 
-import com.init.Jobarcelona.entity.Player;
+import com.init.Jobarcelona.entity.Champ;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface PlayerRepository extends JpaRepository<Player, Integer>{
-
+public interface ChampRepository extends JpaRepository<Champ, Integer> {
 }
